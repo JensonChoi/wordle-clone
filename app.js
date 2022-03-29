@@ -75,16 +75,17 @@ keys.forEach((key) => {
 })
 
 const handleClick = (key) => {
-  console.log('clicked', key)
-  if (key === '«') {
-    deleteLetter()
-    return
+  if (!isGameOver) {
+    if (key === '«') {
+      deleteLetter()
+      return
+    }
+    if (key === 'ENTER') {
+      checkRow()
+      return
+    }
+    addLetter(key)
   }
-  if (key === 'ENTER') {
-    checkRow()
-    return
-  }
-  addLetter(key)
 }
 
 const addLetter = (letter) => {
@@ -128,9 +129,6 @@ const checkRow = () => {
         currentTile = 0
       }
     }
-    // attempt.forEach((letter, letterIndex) => {
-
-    // })
   }
 }
 
